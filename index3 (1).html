@@ -1,0 +1,268 @@
+<html>
+
+<head>
+    <style>
+        body {
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+        }
+
+        h1 {
+            padding-top: 20px;
+            margin-left: 20px;
+        }
+
+        h2 {
+            margin-top: 0px;
+            padding-top: 20px;
+            margin-left: 20px;
+        }
+
+        p {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sectionTitle" style="background-color: lime; height:100px">
+        <h1> Hello Bangkok University </h1>
+    </div>
+
+    <canvas id="mycanvas" height="400" width="800px" style="background-color: yellow;"></canvas>
+
+    <div id="sectionUsers" style="height: auto; background-color: antiquewhite;">
+        <button id="postButton">POST DATA</button>
+        <button id="clearButton">CLEAR DATA</button>
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname"><br><br>
+    </div>
+
+    <div style="height:20px; background-color: antiquewhite"> </div>
+
+    <div id="section1" style="background-color:rgba(232, 232, 90,1); height: auto; width: 100%">
+        <h2> Section 1 </h2>
+        <p> The FBI told a judge they expected to find "evidence of obstruction" of justice in a search of former
+            President Donald Trump's Florida home, according to newly released court papers.
+            Investigators said top secret files had been stored at Mar-a-Lago along with assorted newspapers and
+            magazines. The justice department said it censored the affidavit to protect "a significant number of
+            civilian
+            witnesses".
+        </p>
+
+        <p> Mr Trump said the inquiry was being led by "political Hacks and Thugs".
+            On Friday, the US Department of Justice released a version of the affidavit used to justify the FBI's
+            incursion into Mr Trump's Mar-a-Lago estate on 8 August, but it has been heavily redacted.
+            Given that the court papers were filed before the search of the Palm Beach estate, they contain no new
+            details on the 11 sets of classified documents that the justice department has said were recovered from the
+            exclusive golf club.
+        </p>
+        <div style="height:20px"> </div>
+    </div>
+
+    <div id="section2" style="background-color:rgba(129, 220, 80,1); height: auto; width:100%">
+        <h2> Section 2 </h2>
+        <p> The FBI told a judge they expected to find "evidence of obstruction" of justice in a search of former
+            President Donald Trump's Florida home, according to newly released court papers.
+            Investigators said top secret files had been stored at Mar-a-Lago along with assorted newspapers and
+            magazines. The justice department said it censored the affidavit to protect "a significant number of
+            civilian
+            witnesses".
+        </p>
+        <div style="height:20px"> </div>
+    </div>
+
+    <div id="section3" style="background-color:#DE5C40; height: auto; width:100%">
+        <h2> Section 3 </h2>
+        <p> Mr Trump said the inquiry was being led by "political Hacks and Thugs".
+            On Friday, the US Department of Justice released a version of the affidavit used to justify the FBI's
+            incursion into Mr Trump's Mar-a-Lago estate on 8 August, but it has been heavily redacted.
+            Given that the court papers were filed before the search of the Palm Beach estate, they contain no new
+            details on the 11 sets of classified documents that the justice department has said were recovered from the
+            exclusive golf club.
+        </p>
+        <div style="height:20px"> </div>
+    </div>
+
+    <div style="display:table; width:100%; background-color:green; height: auto">
+        <div id="section4-left" style="float: left; width:50%; background-color:pink">
+            <h2> Section 4 Left </h2>
+            <p> Mr Trump said the inquiry was being led by "political Hacks and Thugs".
+                On Friday, the US Department of Justice released a version of the affidavit used to justify the FBI's
+                incursion into Mr Trump's Mar-a-Lago estate on 8 August, but it has been heavily redacted.
+                Given that the court papers were filed before the search of the Palm Beach estate, they contain no new
+                details on the 11 sets of classified documents that the justice department has said were recovered from
+                the
+                exclusive golf club.
+            </p>
+        </div>
+        <div id="section4-right" style="float: left; width:50%; background-color:fuchsia; height:100%">
+            <h2> Section 4 Right </h2>
+            <p> Mr Trump said the inquiry was being led by "political Hacks and Thugs".
+                On Friday, the US Department of Justice released a version of the affidavit used to justify the FBI's
+                incursion into Mr Trump's Mar-a-Lago estate on 8 August, but it has been heavily redacted.
+                Given that the court papers were filed before the search of the Palm Beach estate, they contain no new
+                details on the 11 sets of classified documents that the justice department has said were recovered from
+                the
+                exclusive golf club.
+            </p>
+        </div>
+
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        axios.get('https://api.github.com/users/mapbox')
+            .then((response) => {
+                console.log("AXIE")
+                console.log(response.data);
+                console.log(response.status);
+                console.log(response.statusText);
+                console.log(response.headers);
+                console.log(response.config);
+
+                console.log('getting')
+            });
+
+        var users = []
+
+        var usersDiv = document.getElementById("sectionUsers")
+        var lastNameInput = document.getElementById('lname')
+
+        var canvas = document.getElementById('mycanvas')
+        var ctx = canvas.getContext("2d");
+
+        ctx.lineWidth = 1;
+
+        ctx.beginPath();
+        ctx.rect(20, 20, 50, 10);
+        ctx.stroke();
+
+        ctx.moveTo(0, 0);
+        ctx.lineTo(200, 100);
+        ctx.stroke();
+
+
+
+
+        var newUser;
+
+        lastNameInput.onchange = (evt) => {
+            console.log('times a changing', evt.target.value)
+            newUser = evt.target.value
+        }
+
+        axios.get('http://127.0.0.1:3000/users')
+            .then((response) => {
+                console.log("MOXIE fff")
+                // console.log(response.data);
+                // console.log(response.status);
+                // console.log(response.statusText);
+                // console.log(response.headers);
+                // console.log(response.config);
+
+                users = response.data
+                console.log('users updated', users)
+
+                for (user of users) {
+                    let p = document.createElement("p");
+                    p.innerHTML = user.name;
+                    p.style.color = 'brown';
+                    usersDiv.appendChild(p);
+                }
+            });
+
+
+        var circleX = 0;
+        var circleY = 100;
+        var circleXvel = 0;
+        var circleYvel = 0;
+
+        document.addEventListener("keydown", (event) => {
+            console.log("KEYDOWN", event.key)
+            if (event.key == 'a') {
+                circleXvel = 5;
+            }
+            else if (event.key == 'd') {
+                circleXvel = -5
+            }
+        });
+
+        setInterval(myGameLoop, 20)
+
+        function myGameLoop() {
+            circleX = circleX + circleXvel;
+            circleY = circleY + circleYvel;
+
+            ctx.beginPath();
+            ctx.rect(0, 0, 1000, 1000);
+            ctx.fillStyle = "yellow";
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(circleX, circleY, 50, 0, 2 * Math.PI);
+            ctx.fillStyle = "blue";
+            ctx.fill();
+            ctx.stroke();
+
+        }
+
+        var postButton = document.getElementById("postButton")
+        var clearButton = document.getElementById("clearButton")
+
+        clearButton.onclick = () => {
+
+
+            axios.post('/clearUsers')
+                .then((response) => {
+                    console.log('CLEARED', response);
+                    window.location.href = "http://www.localhost:3000";
+                }, (error) => {
+                    console.log(error);
+                });
+
+        }
+        postButton.onclick = () => {
+
+            const testData = {
+                id: 'Finn',
+                name: newUser,
+            }
+            axios.post('/addUser', testData)
+                .then((response) => {
+                    console.log('POSTED', response);
+                    window.location.href = "http://www.localhost:3000";
+                }, (error) => {
+                    console.log(error);
+                });
+
+        }
+
+
+
+        var sec1 = document.getElementById("section1")
+        var sec2 = document.getElementById("section2")
+
+        sec1.onmouseover = () => {
+            sec1.style.backgroundColor = 'rgba(232, 232, 90,0.5)';
+        }
+
+        sec1.onmouseout = () => {
+            sec1.style.backgroundColor = 'rgba(232, 232, 90,1)';
+        }
+
+        sec2.onmouseover = () => {
+            sec2.style.backgroundColor = 'rgba(129, 220, 80,0.5)';
+        }
+
+        sec2.onmouseout = () => {
+            sec2.style.backgroundColor = 'rgba(129, 220, 80,1)';
+        }
+
+    </script>
+
+</body>
+
+</html>
